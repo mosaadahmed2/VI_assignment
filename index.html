@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Health & Economic Trends</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>US Health & Economic Trends</h1>
+        <h3>Interactive Data Visualization</h3>
+        <p>Data Source: <a href="https://www.cdc.gov/heartdisease" target="_blank">CDC Heart and Stroke Atlas</a></p>
+    </header>
+
+    <section>
+        <label for="scatter-dropdown">Select Attribute:</label>
+        <select id="scatter-dropdown"></select>
+    </section>
+
+    <main class="dashboard">
+        <section id="scatterplot-section">
+            <h2>Scatterplot</h2>
+            <div id="scatterplot"></div>
+        </section>
+
+        <section id="histogram-section">
+            <h2>Distribution of Selected Attribute</h2>
+            <div id="inactive-histogram"></div>
+        </section>
+
+        <section id="map-section">
+            <h2>Choropleth Map</h2>
+            <div id="map-container">
+                <svg id="map"></svg>
+            </div>
+        </section>
+    </main>
+
+    <div id="tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
