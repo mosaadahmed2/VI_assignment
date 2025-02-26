@@ -153,6 +153,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .attr("stroke", "#fff")
                     .attr("stroke-width", 0.3);
+
+                const brush = d3.brush()
+                    .extent([[0, 0], [width, height]])
+                    .on("end", brushedMap);
+
+                mapSvg.append("g").call(brush);
+
+                function brushedMap({ selection }) {
+                    if (!selection) {
+                        filteredData = data; 
+                    } else {
+                        const [[x0, y0], [x1, y1]] = selection;
+                        filteredData = filteredData.filter(d => {
+                            const centroid = path.centroid(d);
+                            return centroid[0] >= x0 && centroid[0] <= x1 && centroid[1] >= y0 && centroid[1] <= y1;
+                        });
+                    }
+                    updateVisualizations();
+                }
             });
         }
 
