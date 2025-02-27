@@ -1,38 +1,66 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    display: flex;
 }
 
-header {
+/* Full Page Layout */
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr;  /* Sidebar takes fixed width, rest takes remaining space */
+    height: 100vh;
+}
+
+/* Sidebar Navigation */
+.sidebar {
     background-color: #2C3E50;
     color: white;
-    padding: 15px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1 {
-    margin: 0;
+.sidebar h1, .sidebar h3, .sidebar h4, .sidebar p {
+    margin: 10px 0;
 }
 
-main.dashboard {
+.sidebar a {
+    color: #f4f4f4;
+    text-decoration: none;
+}
+
+.sidebar select {
+    margin-top: 15px;
+    padding: 8px;
+    width: 80%;
+}
+
+/* Main Dashboard */
+.dashboard {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr; /* Two columns for plots */
+    grid-template-rows: auto auto; /* Two rows */
     gap: 20px;
     padding: 20px;
 }
 
+/* Plot Containers */
 #scatterplot-section, #map-section, #histogram-section {
     background: white;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #map {
-    width: 100%;
+    width: 600px;
     height: 400px;
 }
 
@@ -41,7 +69,9 @@ svg {
     height: 100%;
 }
 
-select {
-    margin: 10px;
-    padding: 5px;
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .dashboard {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
 }
